@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+echo "Init Stage 1"
+
+for f in /etc/runit/1.d/*.sh; do
+	[ -r $f ] && source $f
+done
+
+echo "Init Stage 1 Done."
