@@ -1,4 +1,5 @@
 echo "Mounting pseudo-filesystems..."
+
 mountpoint -q /proc || mount -t proc     -o rw,relatime                     proc /proc
 mountpoint -q /sys  || mount -t sysfs    -o rw,nosuid,nodev,noexec,relatime sys  /sys
 mountpoint -q /run  || mount -t tmpfs    -o mode=0755,rw,nosuid,nodev       run  /run
@@ -11,4 +12,7 @@ mountpoint -q /dev/shm || mount -t tmpfs  -o rw,nosuid,nodev                    
 if [ -d /sys/firmware/efi/efivars ]; then
     mountpoint -q /sys/firmware/efi/efivars || mount -t efivarfs -o nosuid,noexec,nodev efivarfs /sys/firmware/efi/efivars
 fi
+
+ln -s /proc/self/fd /dev/fd
+
 echo "Done."
