@@ -9,3 +9,10 @@ for f in /etc/runit/1.d/*.sh; do
 done
 
 echo "Init Stage 1 Done."
+
+echo "Running oneshots"
+# trigger oneshot
+source /etc/runit/vars
+cd "$basedir"
+../scripts/run-oneshot
+echo "Done."

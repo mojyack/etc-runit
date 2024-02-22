@@ -6,7 +6,7 @@ echo "Init Stage 2"
 
 source /etc/runit/vars
 cd "$basedir"
-./generate-services
+../scripts/generate-services
 
 source ./vars
 svdir=$svroot/services
